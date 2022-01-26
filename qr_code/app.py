@@ -16,5 +16,3 @@ class QR:
             self.image.save(self.filename)
         else:
             self.image.save(filename)
-
-QR("Hi from AzizbekDeveloper").save()
