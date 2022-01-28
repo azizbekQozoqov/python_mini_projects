@@ -4,7 +4,8 @@ from tkinter.messagebox import showinfo, showwarning, showerror, askquestion,ask
 # Creating window
 root = Tk()
 root.title("Calculator app")
-
+root.minsize(310, 440)
+root.maxsize(40, 30)
 # input
 e = Entry(root, width=35, borderwidth=3)
 e.grid(row=0, column=0, columnspan=3, padx=10, pady=10)
@@ -19,22 +20,47 @@ def clear():
 def add():
     first_number = e.get()
     global f_num
+    global math
+    math = "addition"
     f_num = int(first_number)
     e.delete(0, END)
 
 def equal():
     second_number = e.get()
     e.delete(0, END)
-    e.insert(0, f_num + int(second_number))
+
+    if math == "addition":
+        e.insert(0, f_num + int(second_number))
+    if math == "subtracktion":
+        e.insert(0, f_num - int(second_number))
+    if math == "multiplication":
+        e.insert(0, f_num * int(second_number))
+    if math == "divison":
+        e.insert(0, f_num / int(second_number))
 
 def subtrackt():
-    pass
+    first_number = e.get()
+    global f_num
+    global math
+    math = "subtracktion"
+    f_num = int(first_number)
+    e.delete(0, END)
 
 def multiply():
-    pass
+    first_number = e.get()
+    global f_num
+    global math
+    math = "multiplication"
+    f_num = int(first_number)
+    e.delete(0, END)
 
 def divide():
-    pass
+    first_number = e.get()
+    global f_num
+    global math
+    math = "divison"
+    f_num = int(first_number)
+    e.delete(0, END)
 
 button_1 = Button(root, text="1", padx=40, pady=20, command=lambda: button_add(1))
 button_2 = Button(root, text="2", padx=40, pady=20, command=lambda: button_add(2))
